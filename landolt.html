@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<link rev="made" href="mailto:cho45@lowreal.net"/>
+
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+		<script type="text/javascript" src="landolt.js"></script>
+
+		<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+
+		<style>
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<p>
+				<label>
+					スケール調整
+					<input type="range" min="60" max="200" step="1" value="135" id="dpi"/><!-- 135 = mac book air 11in -->
+					(1円硬貨をあてて調整: <span id="dpi-n"></span>dpi)
+				</label>
+			</p>
+			<p>
+				<label>
+					測定距離
+					<input type="range" min="0.5" max="5" step="0.5" value="1" id="distance"/>
+					(<span id="distance-n"></span>m 離れて計測)
+				</label>
+			</p>
+			<canvas id="visual-acuity" width="5000" height="5000"></canvas>
+		</div>
+	</body>
+</html>
