@@ -14,7 +14,7 @@ $(function () {
 		ctx.beginPath();
 		ctx.arc(0, 0, 2.5 * size - (size / 2), 0, Math.PI * 2, false);
 		ctx.stroke();
-		ctx.rotate(Math.PI / 2 * ~~(Math.random() * 4));
+		ctx.rotate( (Math.PI * 2) / 8 * ~~(Math.random() * 8));
 		ctx.clearRect(0, -(size / 2), size * 2.5 + size, size);
 		ctx.restore();
 	}
