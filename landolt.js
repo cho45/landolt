@@ -5,7 +5,6 @@ function sizeByDistanceAndAngle (distance, angle) {
 $(function () {
 	var canvas = document.getElementById('visual-acuity');
 	var ctx = canvas.getContext('2d');
-	var unit = sizeByDistanceAndAngle(5000, Math.PI * 2 / 360 / 60); // 1分の視角で5m先を見たときの大きさ
 
 	function drawLandoltCircle (x, y, size) {
 		ctx.save();
@@ -20,10 +19,10 @@ $(function () {
 	}
 
 	$('#dpi, #distance').change(function () {
-		var dpi = +$('#dpi').val();
-		var mm  = dpi / 25.4;
+		var dpi      = +$('#dpi').val();
+		var mm       = dpi / 25.4;
 		var distance = +$('#distance').val();
-		var distanceFactor = distance / 5;
+		var unit     = sizeByDistanceAndAngle(distance * 1000, Math.PI * 2 / 360 / 60);
 		$('#distance-n').text(distance);
 		$('#dpi-n').text(dpi);
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -38,9 +37,9 @@ $(function () {
 		ctx.save();
 		var vas = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.2, 1.5, 2.0];
 		var f = function (o) {
-			var x = (unit * mm / 0.1 * distanceFactor) * 4 * o, y = 50;
+			var x = (unit * mm / 0.1) * 4 * o, y = 50;
 			for (var i = 0, it; (it = vas[i]); i++) {
-				var size = unit * mm / it * distanceFactor;
+				var size = unit * mm / it;
 				var rad  = size * 2.5 + (size / 2);
 				drawLandoltCircle(x, y + rad, size);
 				ctx.font = "10px Arial";
