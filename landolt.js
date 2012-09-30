@@ -35,16 +35,18 @@ $(function () {
 		ctx.fillText(~~(w / 10) + 'cm', 10, 8);
 
 		ctx.save();
-		var vas = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.2, 1.5, 2.0];
+		var vas = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.2, 1.5, 2.0, 2.5, 3.0];
 		var f = function (o) {
-			var x = (unit * mm / 0.1) * 4 * o, y = 50;
+			var fontSize = distance * 10 * mm;
+			ctx.font = fontSize + "px Arial";
+
+			var x = (unit * mm / 0.1) * 4 * o + (fontSize * 2), y = 50;
 			for (var i = 0, it; (it = vas[i]); i++) {
 				var size = unit * mm / it;
 				var rad  = size * 2.5 + (size / 2);
 				drawLandoltCircle(x, y + rad, size);
-				ctx.font = "10px Arial";
-				ctx.fillText(it, x, y + rad * 2 + 20);
-				y += (rad * 2) + 50;
+				ctx.fillText(it.toFixed(1), 10, y + rad + (fontSize / 3));
+				y += (rad * 2) + fontSize;
 			}
 		};
 		f(1);
