@@ -6,16 +6,18 @@ $(function () {
 	var canvas = document.getElementById('visual-acuity');
 	var ctx = canvas.getContext('2d');
 
-	function drawLandoltCircle (x, y, size) {
+	function drawLandoltCircle (x, y, size, direction) {
+		direction = typeof direction == 'undefined' ? ~~(Math.random() * 8): direction;
 		ctx.save();
 		ctx.translate(x ,y);
 		ctx.lineWidth = size;
 		ctx.beginPath();
 		ctx.arc(0, 0, 2.5 * size - (size / 2), 0, Math.PI * 2, false);
 		ctx.stroke();
-		ctx.rotate( (Math.PI * 2) / 8 * ~~(Math.random() * 8));
+		ctx.rotate( (Math.PI * 2) / 8 * direction);
 		ctx.clearRect(0, -(size / 2), size * 2.5 + size, size);
 		ctx.restore();
+		return direction;
 	}
 
 	$('#dpi, #distance').change(function () {
