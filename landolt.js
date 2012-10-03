@@ -61,4 +61,10 @@ $(function () {
 		f(3);
 		f(5);
 	}).change();
+
+	if (location.hash == '#foobar') {
+		setInterval(function () {
+			$('#dpi').change();
+		}, 10);
+	}
 });
