@@ -5,6 +5,12 @@ function sizeByDistanceAndAngle (distance, angle) {
 $(function () {
 	var canvas = document.getElementById('visual-acuity');
 	var ctx = canvas.getContext('2d');
+	ctx.fillStyle = '#000';
+
+	if (navigator.userAgent.match(/iPhone|Android|iPod/)) {
+		canvas.width = screen.width;
+		canvas.height = 3000;
+	}
 
 	function drawLandoltCircle (x, y, size, direction) {
 		direction = typeof direction == 'undefined' ? ~~(Math.random() * 8): direction;
